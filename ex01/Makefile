@@ -2,9 +2,9 @@
 
 CXX=c++
 CXXFLAGS=-Wall -Wextra -Werror -std=c++98 -MMD
-SRC=main.cpp Bureaucrat.cpp
+SRC=main.cpp Bureaucrat.cpp Form.cpp
 OBJS=$(SRC:.cpp=.o)
-TARGET=bureaucrat
+TARGET=Form
 
 all: $(TARGET)
 
