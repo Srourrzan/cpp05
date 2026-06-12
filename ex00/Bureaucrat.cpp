@@ -22,7 +22,7 @@ Bureaucrat & Bureaucrat::operator=( Bureaucrat & rhs)
 {
   if (this != &rhs)
   {
-    m_name = rhs.m_name;
+    // m_name = rhs.m_name;
     m_grade = rhs.m_grade;
   }
   return (*this);
@@ -47,7 +47,7 @@ void Bureaucrat::increamentGrade()
 
 void Bureaucrat::decreamentGrade()
 {
-  m_grade -= 1;
+  m_grade += 1;
   if (m_grade > 150)
     throw GradeTooLowException();
 }
