@@ -22,41 +22,40 @@ Bureaucrat & Bureaucrat::operator=( Bureaucrat & rhs)
 {
   if (this != &rhs)
   {
-    // m_name = rhs.m_name;
     m_grade = rhs.m_grade;
   }
   return (*this);
 }
 
-const std::string & Bureaucrat::getName()
+const std::string & Bureaucrat::_getName()
 {
   return (m_name);
 }
 
-int Bureaucrat::getGrade( )
+int Bureaucrat::_getGrade( ) const
 {
   return (m_grade);
 }
 
-void Bureaucrat::increamentGrade()
+void Bureaucrat::_increamentGrade()
 {
   m_grade -= 1;
   if (m_grade < 1)
     throw GradeTooHighException();
 }
 
-void Bureaucrat::decreamentGrade()
+void Bureaucrat::_decreamentGrade()
 {
   m_grade += 1;
   if (m_grade > 150)
     throw GradeTooLowException();
 }
 
-void Bureaucrat::signForm( Form & form )
+void Bureaucrat::_signForm( AForm & form )
 {
   try
   {
-    form.beSigned(*this);
+    form._beSigned(*this);
   }
   catch(const std::exception& e)
   {
@@ -64,15 +63,15 @@ void Bureaucrat::signForm( Form & form )
   }
   std::cout << m_name
             << " signed "
-            << form.getName()
+            << form._getName()
             << std::endl;
 }
 
 std::ostream & operator<<(std::ostream & os, Bureaucrat & rhs)
 {
-  os  << rhs.getName()
+  os  << rhs._getName()
       << ", bureaucrat grade "
-      << rhs.getGrade()
+      << rhs._getGrade()
       << ".";
   
   return (os);

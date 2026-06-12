@@ -1,10 +1,10 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 #include "Bureaucrat.hpp"
 
-Form::~Form( )
+AForm::~AForm( )
 {}
 
-Form::Form( std::string name, int signGrade, int executeGrade)
+AForm::AForm( std::string name, int signGrade, int executeGrade)
   : m_name(name),
     m_signGrade(signGrade),
     m_executeGrade(executeGrade),
@@ -16,14 +16,14 @@ Form::Form( std::string name, int signGrade, int executeGrade)
     throw GradeTooLowException();
 }
 
-Form::Form( const Form & src)
+AForm::AForm( const AForm & src)
   : m_name(src.m_name),
     m_signGrade(src.m_signGrade),
     m_executeGrade(src.m_executeGrade),
     m_signedFlage(src.m_signedFlage)
 {}
 
-Form & Form::operator=( const Form & rhs )
+AForm & AForm::operator=( const AForm & rhs )
 {
   if (this != &rhs)
   {
@@ -32,27 +32,27 @@ Form & Form::operator=( const Form & rhs )
   return (*this);
 }
 
-const std::string & Form::getName( )
+const std::string & AForm::_getName( )
 {
   return (m_name);
 }
 
-int Form::getSignGrade( )
+int AForm::_getSignGrade( )
 {
   return (m_signGrade);
 }
 
-int Form::getExecutionGrade( )
+int AForm::_getExecutionGrade( )
 {
   return (m_executeGrade);
 }
 
-bool Form::getSignedFlag( )
+bool AForm::_getSignedFlag( )
 {
   return (m_signedFlage);
 }
 
-void Form::beSigned( Bureaucrat & boss )
+void AForm::_beSigned( Bureaucrat & boss )
 {
   if (boss.getGrade() <= m_signGrade)
     m_signedFlage = true;
@@ -60,16 +60,26 @@ void Form::beSigned( Bureaucrat & boss )
     throw GradeTooLowException();
 }
 
-std::ostream & operator<<( std::ostream & os, Form & rhs)
+void AForm::_execute( Bureaucrat const & executor ) const
 {
-  os << "Form name: "
-      << rhs.getName()
+  if (!m_signedFlage)
+    throw NotSigndException();
+  if (executor.getGrade() > m_executeGrade)
+    throw GradeTooLowException();
+  _executeAction();
+}
+
+
+std::ostream & operator<<( std::ostream & os, AForm & rhs)
+{
+  os << "AForm name: "
+      << rhs._getName()
       << "\nsign minimum grade: "
-      << rhs.getSignGrade()
+      << rhs._getSignGrade()
       << "\nexecution minimum grade: "
-      << rhs.getExecutionGrade()
+      << rhs._getExecutionGrade()
       << "\nis it signed: "
-      << rhs.getSignedFlag()
+      << rhs._getSignedFlag()
       << std::endl;
   
   return (os);
