@@ -20,6 +20,7 @@ public:
   int _getSignGrade( ) const;
   bool _getSignedFlag( ) const;
   int _getExecutionGrade( ) const;
+  std::string _getTarget( ) const;
   void _beSigned( Bureaucrat & );
   const std::string & _getName( ) const;
   void _execute( Bureaucrat const & executor ) const;
@@ -60,6 +61,18 @@ public:
       return ("Failed to create the file");
     }
   };
+
+  class RobotomizationException: public std::exception
+  {
+  public:
+	virtual const char* what() const throw()
+	{
+	  return ("robotomization failed");
+	}
+  };
+
+protected:
+  std::string m_target;
 
 private:
   const std::string m_name;

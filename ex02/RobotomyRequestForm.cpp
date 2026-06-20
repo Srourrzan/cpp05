@@ -4,25 +4,22 @@ RobotomyRequestForm::~RobotomyRequestForm( )
 {}
 
 RobotomyRequestForm::RobotomyRequestForm( const std::string & target )
-  : AForm("RobotomyRequestForm", 72, 45),
-	m_target(target)
-{}
+  : AForm("RobotomyRequestForm", 72, 45)
+{
+  m_target = target;
+}
 
 RobotomyRequestForm::RobotomyRequestForm( const RobotomyRequestForm & src )
-  : AForm("RobotomyRequestForm", 72, 45),
-	m_target(src.m_target)
-{}
+  : AForm("RobotomyRequestForm", 72, 45)
+{
+  m_target = src.m_target;
+}
 
 RobotomyRequestForm & RobotomyRequestForm::operator=( const RobotomyRequestForm & rhs )
 {
   if (this != &rhs)
 	m_target = rhs.m_target;
   return (*this);
-}
-
-std::string RobotomyRequestForm::_getTarget( ) const
-{
-  return (m_target);
 }
 
 void RobotomyRequestForm::_executeAction( ) const
@@ -38,8 +35,7 @@ void RobotomyRequestForm::_executeAction( ) const
 	}
   else
 	{
-	  std::cout << "robotomization failed"
-				<< std::endl;
+	  throw (RobotomizationException());
 	}
   
 }

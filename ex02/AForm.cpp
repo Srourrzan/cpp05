@@ -59,6 +59,11 @@ bool AForm::_getSignedFlag( ) const
   return (m_signedFlage);
 }
 
+std::string AForm::_getTarget( ) const
+{
+  return (m_target);
+}
+
 void AForm::_beSigned( Bureaucrat & boss )
 {
   std::cout << "Form sign grade: "

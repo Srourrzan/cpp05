@@ -3,6 +3,7 @@
 #include "Bureaucrat.hpp"
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
 
 int main()
@@ -18,7 +19,7 @@ int main()
               << Shrub
               << std::endl;
     Tom._signForm(Shrub);
-    Tom._executForm(Shrub);
+    Tom._executeForm(Shrub);
 
     Bureaucrat Jerry("Jerry", 149);
     ShrubberyCreationForm schoolShrub("School");
@@ -28,7 +29,7 @@ int main()
               << schoolShrub
               << std::endl;
     Jerry._signForm(schoolShrub);
-    Jerry._executForm(schoolShrub);
+    Jerry._executeForm(schoolShrub);
 
     Bureaucrat John("John", 140);
     ShrubberyCreationForm parkShrub("Park");
@@ -38,14 +39,22 @@ int main()
               << parkShrub
               << std::endl;
     John._signForm(parkShrub);
-    John._executForm(parkShrub);
+    John._executeForm(parkShrub);
 
 	RobotomyRequestForm Robo("test");
 	Tom._signForm(Robo);
-	Tom._executForm(Robo);
+	Tom._executeForm(Robo);
 	RobotomyRequestForm Car("Car");
 	Jerry._signForm(Car);
-	Jerry._executForm(Car);
+	Jerry._executeForm(Car);
+
+	PresidentialPardonForm family1("family1");
+	John._signForm(family1);
+	John._executeForm(family1);
+
+	PresidentialPardonForm family2("family2");
+	Jerry._signForm(family2);
+	Jerry._executeForm(family2);
   }
   catch(const std::exception& e)
   {

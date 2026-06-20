@@ -67,15 +67,15 @@ void Bureaucrat::_signForm( AForm & form )
   }
 }
 
-void Bureaucrat::_executForm( const AForm & form ) const
+void Bureaucrat::_executeForm( const AForm & form ) const
 {
 	try
 	{
 		form._execute(*this);
 		std::cout << this->m_name
-							<< " executed "
-							<< form._getName()
-							<< std::endl;
+				  << " executed "
+				  << form._getName()
+				  << std::endl;
 	}
 	catch(const AForm::NotSigndException & e)
 	{
@@ -85,11 +85,11 @@ void Bureaucrat::_executForm( const AForm & form ) const
   catch(const AForm::GradeTooLowException & e)
   {
     std::cerr << m_name
-							<< " "
-							<< e.what()
-							<< m_grade
-							<< " for the form with execution grade of "
-							<< form._getExecutionGrade()
+			  << " "
+			  << e.what()
+			  << m_grade
+			  << " for the form with execution grade of "
+			  << form._getExecutionGrade()
               << std::endl;
   }
   catch(const AForm::FileCreationException & e)
@@ -97,6 +97,11 @@ void Bureaucrat::_executForm( const AForm & form ) const
     std::cerr << e.what()
               << std::endl;
   }
+  catch (const AForm::RobotomizationException & e)
+	{
+	  std::cerr << e.what()
+				<< std::endl;
+	}
 }
 
 std::ostream & operator<<(std::ostream & os, Bureaucrat & rhs)

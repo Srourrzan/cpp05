@@ -4,25 +4,22 @@ ShrubberyCreationForm::~ShrubberyCreationForm( )
 {}
 
 ShrubberyCreationForm::ShrubberyCreationForm( const std::string & target )
-  : AForm("ShrubberyCreationForm", 145, 137),
-    m_target(target)
-{}
+  : AForm("ShrubberyCreationForm", 145, 137)
+{
+  m_target = target;
+}
 
 ShrubberyCreationForm::ShrubberyCreationForm( const ShrubberyCreationForm & src )
-  : AForm("ShrubberyCreationForm", 145, 137),
-    m_target(src.m_target)
-{}
+  : AForm("ShrubberyCreationForm", 145, 137)
+{
+  m_target = src.m_target;
+}
 
 ShrubberyCreationForm & ShrubberyCreationForm::operator=( const ShrubberyCreationForm & rhs )
 {
   if (this != &rhs)
     m_target = rhs.m_target;
   return (*this);
-}
-
-std::string ShrubberyCreationForm::_getTarget( ) const
-{
-  return (m_target);
 }
 
 void ShrubberyCreationForm::_executeAction( ) const

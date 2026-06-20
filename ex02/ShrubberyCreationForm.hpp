@@ -12,12 +12,10 @@ public:
   ShrubberyCreationForm( const ShrubberyCreationForm & );
   ShrubberyCreationForm & operator=( const ShrubberyCreationForm & );
 
-  std::string _getTarget( ) const;
   virtual void _executeAction( ) const;
 
-
 private:
-  std::string m_target;
+  
 };
 
 std::ostream & operator<<( std::ostream &, const ShrubberyCreationForm & );
