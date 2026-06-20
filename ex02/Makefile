@@ -2,10 +2,11 @@
 
 CXX=c++
 CXXFLAGS=-Wall -Wextra -Werror -std=c++98 -MMD
-SRCS= 	main.cpp 				\
-			Bureaucrat.cpp 	\
-			AForm.cpp 			\
-			ShrubberyCreationForm.cpp
+SRCS= 	main.cpp 						\
+			Bureaucrat.cpp				\
+			AForm.cpp 					\
+			ShrubberyCreationForm.cpp	\
+			RobotomyRequestForm.cpp		
 OBJS=$(patsubst %.cpp,build/%.o,$(SRCS))
 DEPS=$(OBJS:.o=.d)
 TARGET=Work

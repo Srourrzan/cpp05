@@ -1,8 +1,13 @@
+#include <ctime>
+
 #include "Bureaucrat.hpp"
+#include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
+
 
 int main()
 {
+  std::srand((unsigned)std::time(NULL));
   try
   {
     Bureaucrat Tom("Tom", 45);
@@ -34,6 +39,13 @@ int main()
               << std::endl;
     John._signForm(parkShrub);
     John._executForm(parkShrub);
+
+	RobotomyRequestForm Robo("test");
+	Tom._signForm(Robo);
+	Tom._executForm(Robo);
+	RobotomyRequestForm Car("Car");
+	Jerry._signForm(Car);
+	Jerry._executForm(Car);
   }
   catch(const std::exception& e)
   {
