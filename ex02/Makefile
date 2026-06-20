@@ -2,21 +2,23 @@
 
 CXX=c++
 CXXFLAGS=-Wall -Wextra -Werror -std=c++98 -MMD
-SRC= 	main.cpp 				\
+SRCS= 	main.cpp 				\
 			Bureaucrat.cpp 	\
 			AForm.cpp 			\
 			ShrubberyCreationForm.cpp
-OBJS=$(SRC:.cpp=.o)
+OBJS=$(patsubst %.cpp,build/%.o,$(SRCS))
+DEPS=$(OBJS:.o=.d)
 TARGET=Work
 
 all: $(TARGET)
 
--include $(OBJS:.o=.d)
+-include $(DEPS)
 
 $(TARGET): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $(TARGET) $(OBJS)
 
-%.o: %.cpp
+build/%.o: %.cpp
+	mkdir -p build
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 re: fclean all
@@ -25,7 +27,9 @@ run:
 	./$(TARGET)
 
 clean:
-	rm -f $(OBJS) *.d
+	rm -f $(OBJS) $(DEPS)
+	rm -rf build/
+	rm -rf *_shrubbery
 
 fclean: clean
 	rm -f $(TARGET)
