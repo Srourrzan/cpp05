@@ -1,59 +1,39 @@
 #include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
 
 int main()
 {
   try
   {
-    try
-    {
-      Bureaucrat Tom("Tom", 160);
-    }
-    catch(const std::exception& e)
-    {
-      std::cerr << e.what() << '\n';
-    }
-    Bureaucrat Jerry("Jerry", 5);
+    Bureaucrat Tom("Tom", 45);
+    ShrubberyCreationForm Shrub("house");
+    LOG_INFO();
+    std::cout << Tom
+              << "\n"
+              << Shrub
+              << std::endl;
+    Tom._signForm(Shrub);
+    Tom._executForm(Shrub);
+
+    Bureaucrat Jerry("Jerry", 149);
+    ShrubberyCreationForm schoolShrub("School");
+    LOG_INFO();
     std::cout << Jerry
+              << "\n"
+              << schoolShrub
               << std::endl;
-    std::cout << "Increase Jerry's grade by 1"
-              << std::endl;
-    Jerry.increamentGrade();
-    std::cout << Jerry.getName()
-              << " grade: "
-              << Jerry.getGrade()
-              << std::endl;
+    Jerry._signForm(schoolShrub);
+    Jerry._executForm(schoolShrub);
 
-    Form highForm("F00", 5, 1);
-    Form midForm("F01", 75, 50);
-    std::cout << "Make "
-              << Jerry.getName()
-              << " sign a very important form: \n"
-              << highForm
+    Bureaucrat John("John", 140);
+    ShrubberyCreationForm parkShrub("Park");
+    LOG_INFO();
+    std::cout << John
+              << "\n"
+              << parkShrub
               << std::endl;
-    Jerry.signForm(highForm);
-    std::cout << highForm.getName()
-              << " got signed "
-              << highForm.getSignedFlag()
-              << std::endl;
-
-    Bureaucrat Tod("Tod", 150);
-    std::cout << "A new bureaucrat got joined, named: "
-              << Tod.getName()
-              << std::endl;
-    std::cout << "Make "
-              << Tod.getName()
-              << " sign mid important form "
-              << midForm
-              << std::endl;
-    std::cout << midForm.getName()
-              << " got signed "
-              << midForm.getSignedFlag()
-              << std::endl;
-    
-    std::cout << Jerry.getName()
-              << " got to retire"
-              << std::endl;
-    Jerry.increamentGrade();
+    John._signForm(parkShrub);
+    John._executForm(parkShrub);
   }
   catch(const std::exception& e)
   {

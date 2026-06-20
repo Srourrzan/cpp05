@@ -8,63 +8,95 @@ Bureaucrat::Bureaucrat( const std::string & name, int grade)
     m_grade(grade)
 {
   if (grade < 1)
-    throw GradeTooHighException();
+    throw (GradeTooHighException());
   else if (grade > 150)
-    throw GradeTooLowException();
+    throw (GradeTooLowException());
 }
 
 Bureaucrat::Bureaucrat( const Bureaucrat& src)
-  : m_name(src.m_name),
-    m_grade(src.m_grade)
+	:	m_name(src.m_name),
+		m_grade(src.m_grade)
 {}
 
 Bureaucrat & Bureaucrat::operator=( Bureaucrat & rhs)
 {
-  if (this != &rhs)
-  {
-    m_grade = rhs.m_grade;
-  }
-  return (*this);
+	if (this != &rhs)
+	{
+		m_grade = rhs.m_grade;
+	}
+	return (*this);
 }
 
 const std::string & Bureaucrat::_getName()
 {
-  return (m_name);
+	return (m_name);
 }
 
 int Bureaucrat::_getGrade( ) const
 {
-  return (m_grade);
+	return (m_grade);
 }
 
 void Bureaucrat::_increamentGrade()
 {
-  m_grade -= 1;
-  if (m_grade < 1)
-    throw GradeTooHighException();
+	m_grade -= 1;
+	if (m_grade < 1)
+		throw (GradeTooHighException());
 }
 
 void Bureaucrat::_decreamentGrade()
 {
-  m_grade += 1;
-  if (m_grade > 150)
-    throw GradeTooLowException();
+	m_grade += 1;
+	if (m_grade > 150)
+		throw (GradeTooLowException());
 }
 
 void Bureaucrat::_signForm( AForm & form )
 {
-  try
+	try
   {
     form._beSigned(*this);
+    std::cout << m_name
+            << " signed "
+            << form._getName()
+            << std::endl;
   }
   catch(const std::exception& e)
   {
     std::cerr << e.what() << '\n';
   }
-  std::cout << m_name
-            << " signed "
-            << form._getName()
-            << std::endl;
+}
+
+void Bureaucrat::_executForm( const AForm & form ) const
+{
+	try
+	{
+		form._execute(*this);
+		std::cout << this->m_name
+							<< " executed "
+							<< form._getName()
+							<< std::endl;
+	}
+	catch(const AForm::NotSigndException & e)
+	{
+		std::cerr << e.what() 
+							<< std::endl;
+  }
+  catch(const AForm::GradeTooLowException & e)
+  {
+    std::cerr << m_name
+							<< " "
+							<< e.what()
+							<< m_grade
+							<< " for the form with execution grade of "
+							<< form._getExecutionGrade()
+              << std::endl;
+  }
+  catch(const AForm::FileCreationException & e)
+  {
+    std::cerr << e.what()
+              << std::endl;
+  }
 }
 
 std::ostream & operator<<(std::ostream & os, Bureaucrat & rhs)

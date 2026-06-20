@@ -2,20 +2,22 @@
 # define ShrubberyCreationForm_hpp
 
 # include "AForm.hpp"
+# include <fstream>
 
 class ShrubberyCreationForm: public AForm
 {
 public:
   ~ShrubberyCreationForm( );
-  ShrubberyCreationForm( std::string & );
+  ShrubberyCreationForm( const std::string & );
   ShrubberyCreationForm( const ShrubberyCreationForm & );
-  ShrubberyCreationForm & operator<<( const ShrubberyCreationForm & );
-  
+  ShrubberyCreationForm & operator=( const ShrubberyCreationForm & );
+
+  std::string _getTarget( ) const;
+  void _executeAction( ) const;
+
 
 private:
   std::string m_target;
-  const int m_signGrade = 145;
-  const int m_executionGrade = 137;
 };
 
 std::ostream & operator<<( std::ostream &, const ShrubberyCreationForm & );

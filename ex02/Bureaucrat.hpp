@@ -6,6 +6,7 @@
 # include <iostream>
 
 # include "AForm.hpp"
+// # include "ShrubberyCreationForm.hpp"
 
 class Bureaucrat
 {
@@ -20,6 +21,7 @@ public:
   void _increamentGrade( );
   void _decreamentGrade( );
   void _signForm( AForm & );
+  void _executForm( const AForm & ) const;
 
   class GradeTooHighException: public std::exception
   {

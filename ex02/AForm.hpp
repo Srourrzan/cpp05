@@ -5,20 +5,23 @@
 # include <iostream>
 # include <stdexcept>
 
+# define LOG_INFO() std::cout << __FILE__ << ":" << __LINE__ << " " << __func__<< ": ";
+
 class Bureaucrat;
 
 class AForm
 {
 public:
+  AForm();
   virtual ~AForm( );
   AForm( const AForm & );
   AForm( std::string , int , int );
   AForm & operator=( const AForm & );
-  int _getSignGrade( );
-  bool _getSignedFlag( );
-  int _getExecutionGrade( );
+  int _getSignGrade( ) const;
+  bool _getSignedFlag( ) const;
+  int _getExecutionGrade( ) const;
   void _beSigned( Bureaucrat & );
-  const std::string & _getName( );
+  const std::string & _getName( ) const;
   void _execute( Bureaucrat const & executor ) const;
   virtual void _executeAction( ) const = 0;
 
@@ -27,7 +30,7 @@ public:
   public:
     virtual const char* what() const throw()
     {
-      return ("Grade is higher than 1");
+      return ("Grade is high ");
     }
   };
 
@@ -36,7 +39,7 @@ public:
   public:
     virtual const char* what() const throw()
     {
-      return ("Grade is lower than 150");
+      return ("Grade is low " );
     }
   };
 
@@ -46,6 +49,15 @@ public:
     virtual const char* what() const throw()
     {
       return ("The form is not signed, cannot perform execution");
+    }
+  };
+
+  class FileCreationException: public std::exception
+  {
+  public:
+    virtual const char* what() const throw()
+    {
+      return ("Failed to create the file");
     }
   };
 
