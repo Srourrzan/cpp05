@@ -4,7 +4,6 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
-#include "Intern.hpp"
 
 
 int main()
@@ -56,12 +55,6 @@ int main()
 	PresidentialPardonForm family2("family2");
 	Jerry._signForm(family2);
 	Jerry._executeForm(family2);
-  {
-    Intern Joey;
-    AForm *C21;
-
-    C21 = Joey.makeForm("robotomy request", "Bender");
-  }
   }
   catch(const std::exception& e)
   {

@@ -16,3 +16,49 @@ Intern &Intern::operator=(const Intern &other)
   (void)other; 
   return *this; 
 }
+
+// #include "Intern.hpp"
+// #include "ShrubberyCreationForm.hpp"
+// #include "RobotomyRequestForm.hpp"
+// #include "PresidentialPardonForm.hpp"
+// #include <iostream>
+// #include <string>
+
+// // Define the static array of form creators
+// const Intern::FormInfo Intern::formTypes[] = {
+//     {"shrubbery creation", &Intern::createShrubbery},
+//     {"robotomy request", &Intern::createRobotomy},
+//     {"presidential pardon", &Intern::createPresidential}
+// };
+
+// // Fix: Divide by sizeof(element), not the whole array
+// const size_t Intern::formCount = sizeof(Intern::formTypes) / sizeof(Intern::formTypes);
+
+// AForm* Intern::createShrubbery(const std::string &target) {
+//     return new ShrubberyCreationForm(target);
+// }
+
+// AForm* Intern::createRobotomy(const std::string &target) {
+//     return new RobotomyRequestForm(target);
+// }
+
+// AForm* Intern::createPresidential(const std::string &target) {
+//     // Fix: Remove C++11 initializer list syntax
+//     return new PresidentialPardonForm(target);
+// }
+
+// Intern::Intern() {}
+// Intern::~Intern() {}
+// Intern::Intern(const Intern &other) { (void)other; }
+// Intern &Intern::operator=(const Intern &other) { (void)other; return *this; }
+
+// AForm* Intern::makeForm(const std::string &name, const std::string &target) {
+//     for (size_t i = 0; i < formCount; ++i) {
+//         if (formTypes[i].name == name) {
+//             std::cout << "Intern creates " << name << std::endl;
+//             return formTypes[i].creator(target);
+//         }
+//     }
+//     std::cerr << "Intern: Form type '" << name << "' does not exist." << std::endl;
+//     return NULL;
+// }
