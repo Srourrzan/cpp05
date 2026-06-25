@@ -17,26 +17,25 @@ Intern &Intern::operator=(const Intern &other)
   return *this; 
 }
 
-// #include "Intern.hpp"
-// #include "ShrubberyCreationForm.hpp"
-// #include "RobotomyRequestForm.hpp"
-// #include "PresidentialPardonForm.hpp"
-// #include <iostream>
-// #include <string>
+AForm * Intern::_createShrubbery( const std::string & target )
+{
+  return new ShrubberyCreationForm(target);
+}
 
-// // Define the static array of form creators
-// const Intern::FormInfo Intern::formTypes[] = {
-//     {"shrubbery creation", &Intern::createShrubbery},
-//     {"robotomy request", &Intern::createRobotomy},
-//     {"presidential pardon", &Intern::createPresidential}
-// };
+AForm * Intern::_createRobotomy( const std::string & target )
+{
+  return new RobotomyRequestForm(target);
+}
+
+const Intern::FromInfoStruct Intern::fromTypes[] = {
+  {"shrubbery creation", &Intern::_createShrubbery},
+  {"robotomy request", &Intern::_createRobotomy},
+  {"presidential pardon", &Intern::_createPresidential}
+};
 
 // // Fix: Divide by sizeof(element), not the whole array
 // const size_t Intern::formCount = sizeof(Intern::formTypes) / sizeof(Intern::formTypes);
 
-// AForm* Intern::createShrubbery(const std::string &target) {
-//     return new ShrubberyCreationForm(target);
-// }
 
 // AForm* Intern::createRobotomy(const std::string &target) {
 //     return new RobotomyRequestForm(target);
@@ -46,11 +45,6 @@ Intern &Intern::operator=(const Intern &other)
 //     // Fix: Remove C++11 initializer list syntax
 //     return new PresidentialPardonForm(target);
 // }
-
-// Intern::Intern() {}
-// Intern::~Intern() {}
-// Intern::Intern(const Intern &other) { (void)other; }
-// Intern &Intern::operator=(const Intern &other) { (void)other; return *this; }
 
 // AForm* Intern::makeForm(const std::string &name, const std::string &target) {
 //     for (size_t i = 0; i < formCount; ++i) {

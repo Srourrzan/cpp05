@@ -16,7 +16,7 @@ public:
   Intern( const Intern & );
   Intern & operator=( const Intern & );
 
-  AForm * _makeForm( const std::string &, const std::string & );
+  AForm * makeForm( const std::string &, const std::string & );
 
 private:
   AForm * _createShrubbery( const std::string & );
