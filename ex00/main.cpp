@@ -6,6 +6,7 @@ int main()
   {
     try
     {
+      Bureaucrat Harry;
       Bureaucrat Tom("Tom", 160);
     }
     catch(const std::exception& e)

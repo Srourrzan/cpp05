@@ -18,9 +18,6 @@ $(TARGET): $(OBJS)
 
 re: fclean all
 
-run:
-	./$(TARGET)
-
 clean:
 	rm -f $(OBJS) *.d
 
