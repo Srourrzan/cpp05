@@ -16,7 +16,7 @@ public:
   Intern( const Intern & );
   Intern & operator=( const Intern & );
 
-  AForm * makeForm( const std::string &, const std::string & );
+  AForm* makeForm(const std::string &name, const std::string &target);
 
 private:
   AForm * _createShrubbery( const std::string & );
@@ -24,7 +24,7 @@ private:
   AForm * _createPresidential( const std::string & );
   struct FromInfoStruct {
     std::string name;
-    AForm* (*creator)( const std::string & );
+    AForm* (Intern::*creator)( const std::string & );
   };
   static const FromInfoStruct fromTypes[];
   static const size_t fromCount;

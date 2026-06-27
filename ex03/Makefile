@@ -7,7 +7,8 @@ SRCS= 		main.cpp 					\
 			Bureaucrat.cpp				\
 			ShrubberyCreationForm.cpp	\
 			RobotomyRequestForm.cpp		\
-			PresidentialPardonForm.cpp
+			PresidentialPardonForm.cpp \
+			Intern.cpp
 OBJS=$(patsubst %.cpp,build/%.o,$(SRCS))
 DEPS=$(OBJS:.o=.d)
 TARGET=Work
