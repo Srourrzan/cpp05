@@ -11,7 +11,7 @@
 class Bureaucrat
 {
 public:
-  // Bureaucrat( );
+  Bureaucrat( );
   ~Bureaucrat( );
   Bureaucrat( const std::string &, int );
   Bureaucrat( const Bureaucrat& );

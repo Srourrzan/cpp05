@@ -7,6 +7,7 @@
 class ShrubberyCreationForm: public AForm
 {
 public:
+  ShrubberyCreationForm( );
   virtual ~ShrubberyCreationForm( );
   ShrubberyCreationForm( const std::string & );
   ShrubberyCreationForm( const ShrubberyCreationForm & );

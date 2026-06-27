@@ -1,6 +1,13 @@
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
+Form::Form( )
+  : m_name(""),
+    m_signGrade(150),
+    m_executeGrade(150),
+    m_signedFlag(false)
+{}
+
 Form::~Form( )
 {}
 
@@ -8,7 +15,7 @@ Form::Form( std::string name, int signGrade, int executeGrade)
   : m_name(name),
     m_signGrade(signGrade),
     m_executeGrade(executeGrade),
-    m_signedFlage(false)
+    m_signedFlag(false)
 {
   if (m_signGrade < 1 || m_executeGrade < 1)
     throw GradeTooHighException();
@@ -20,14 +27,14 @@ Form::Form( const Form & src)
   : m_name(src.m_name),
     m_signGrade(src.m_signGrade),
     m_executeGrade(src.m_executeGrade),
-    m_signedFlage(src.m_signedFlage)
+    m_signedFlag(src.m_signedFlag)
 {}
 
 Form & Form::operator=( const Form & rhs )
 {
   if (this != &rhs)
   {
-    m_signedFlage = rhs.m_signedFlage;
+    m_signedFlag = rhs.m_signedFlag;
   }
   return (*this);
 }
@@ -49,13 +56,13 @@ int Form::getExecutionGrade( )
 
 bool Form::getSignedFlag( )
 {
-  return (m_signedFlage);
+  return (m_signedFlag);
 }
 
 void Form::beSigned( Bureaucrat & boss )
 {
   if (boss.getGrade() <= m_signGrade)
-    m_signedFlage = true;
+    m_signedFlag = true;
   else
     throw GradeTooLowException();
 }

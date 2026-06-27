@@ -5,7 +5,7 @@ AForm::AForm( )
   : m_name(""),
     m_signGrade(0),
     m_executeGrade(0),
-    m_signedFlage(false)
+    m_signedFlag(false)
 {}
 
 AForm::~AForm( )
@@ -15,7 +15,7 @@ AForm::AForm( std::string name, int signGrade, int executeGrade)
   : m_name(name),
     m_signGrade(signGrade),
     m_executeGrade(executeGrade),
-    m_signedFlage(false)
+    m_signedFlag(false)
 {
   if (m_signGrade < 1 || m_executeGrade < 1)
     throw (GradeTooHighException());
@@ -27,14 +27,14 @@ AForm::AForm( const AForm & src)
   : m_name(src.m_name),
     m_signGrade(src.m_signGrade),
     m_executeGrade(src.m_executeGrade),
-    m_signedFlage(src.m_signedFlage)
+    m_signedFlag(src.m_signedFlag)
 {}
 
 AForm & AForm::operator=( const AForm & rhs )
 {
   if (this != &rhs)
   {
-    m_signedFlage = rhs.m_signedFlage;
+    m_signedFlag = rhs.m_signedFlag;
   }
   return (*this);
 }
@@ -56,7 +56,7 @@ int AForm::_getExecutionGrade( ) const
 
 bool AForm::_getSignedFlag( ) const
 {
-  return (m_signedFlage);
+  return (m_signedFlag);
 }
 
 std::string AForm::_getTarget( ) const
@@ -72,14 +72,14 @@ void AForm::_beSigned( Bureaucrat & boss )
             << boss._getGrade()
             << std::endl;
   if (boss._getGrade() <= m_signGrade)
-    m_signedFlage = true;
+    m_signedFlag = true;
   else
     throw (GradeTooLowException());
 }
 
 void AForm::_execute( Bureaucrat const & executor ) const
 {
-  if (!m_signedFlage)
+  if (!m_signedFlag)
     throw (NotSigndException());
   if (executor._getGrade() > m_executeGrade) //check condition
     throw (GradeTooLowException());

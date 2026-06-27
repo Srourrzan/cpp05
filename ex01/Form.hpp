@@ -10,6 +10,7 @@ class Bureaucrat;
 class Form
 {
 public:
+  Form( );
   ~Form( );
   Form( std::string , int , int );
   Form( const Form & );
@@ -43,7 +44,7 @@ private:
   const std::string m_name;
   const int m_signGrade;
   const int m_executeGrade;
-  bool  m_signedFlage;
+  bool  m_signedFlag;
 };
 
 std::ostream & operator<<( std::ostream &, Form & );

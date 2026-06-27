@@ -1,5 +1,10 @@
 #include "Bureaucrat.hpp"
 
+Bureaucrat::Bureaucrat( )
+  : m_name (""),
+    m_grade(150)
+{}
+
 Bureaucrat::~Bureaucrat( )
 {}
 
@@ -14,8 +19,8 @@ Bureaucrat::Bureaucrat( const std::string & name, int grade)
 }
 
 Bureaucrat::Bureaucrat( const Bureaucrat& src)
-	:	m_name(src.m_name),
-		m_grade(src.m_grade)
+  : m_name(src.m_name),
+    m_grade(src.m_grade)
 {}
 
 Bureaucrat & Bureaucrat::operator=( Bureaucrat & rhs)

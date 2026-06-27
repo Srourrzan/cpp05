@@ -14,7 +14,6 @@ int main()
   {
     Bureaucrat Tom("Tom", 45);
     ShrubberyCreationForm Shrub("house");
-    LOG_INFO();
     std::cout << Tom
               << "\n"
               << Shrub
@@ -24,7 +23,6 @@ int main()
 
     Bureaucrat Jerry("Jerry", 149);
     ShrubberyCreationForm schoolShrub("School");
-    LOG_INFO();
     std::cout << Jerry
               << "\n"
               << schoolShrub
@@ -34,7 +32,6 @@ int main()
 
     Bureaucrat John("John", 140);
     ShrubberyCreationForm parkShrub("Park");
-    LOG_INFO();
     std::cout << John
               << "\n"
               << parkShrub

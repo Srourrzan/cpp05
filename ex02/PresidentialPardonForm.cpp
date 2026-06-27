@@ -1,6 +1,9 @@
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::~PresidentialPardonForm()
+PresidentialPardonForm::PresidentialPardonForm( )
+{}
+
+PresidentialPardonForm::~PresidentialPardonForm( )
 {}
 
 PresidentialPardonForm::PresidentialPardonForm( const std::string & target )

@@ -5,8 +5,6 @@
 # include <iostream>
 # include <stdexcept>
 
-# define LOG_INFO() std::cout << __FILE__ << ":" << __LINE__ << " " << __func__<< ": ";
-
 class Bureaucrat;
 
 class AForm
@@ -78,7 +76,7 @@ private:
   const std::string m_name;
   const int m_signGrade;
   const int m_executeGrade;
-  bool  m_signedFlage;
+  bool  m_signedFlag;
 };
 
 std::ostream & operator<<( std::ostream &, AForm & );
