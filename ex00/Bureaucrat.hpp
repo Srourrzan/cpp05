@@ -14,7 +14,7 @@ public:
   Bureaucrat( const Bureaucrat& );
   Bureaucrat & operator=( Bureaucrat & );
   int getGrade( );
-  std::string & getName( );
+  const std::string & getName( );
   void increamentGrade( );
   void decreamentGrade( );
 
@@ -37,7 +37,7 @@ public:
   };
 
 private:
-  std::string m_name;
+  const std::string m_name;
   int m_grade;
 };
 

@@ -33,7 +33,7 @@ Bureaucrat & Bureaucrat::operator=( Bureaucrat & rhs)
   return (*this);
 }
 
-std::string & Bureaucrat::getName()
+const std::string & Bureaucrat::getName()
 {
   return (m_name);
 }
