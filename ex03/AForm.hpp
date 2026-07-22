@@ -15,14 +15,14 @@ public:
   AForm( const AForm & );
   AForm( std::string , int , int );
   AForm & operator=( const AForm & );
-  int _getSignGrade( ) const;
-  bool _getSignedFlag( ) const;
-  int _getExecutionGrade( ) const;
-  std::string _getTarget( ) const;
-  void _beSigned( Bureaucrat & );
-  const std::string & _getName( ) const;
-  void _execute( Bureaucrat const & executor ) const;
-  virtual void _executeAction( ) const = 0;
+  int getSignGrade( ) const;
+  bool getSignedFlag( ) const;
+  int getExecutionGrade( ) const;
+  std::string getTarget( ) const;
+  void beSigned( Bureaucrat & );
+  const std::string & getName( ) const;
+  void executeAction( Bureaucrat const & executor ) const;
+  virtual void execute( Bureaucrat const & executor ) const = 0;
 
   class GradeTooHighException: public std::exception
   {

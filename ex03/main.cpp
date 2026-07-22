@@ -18,8 +18,8 @@ int main()
               << "\n"
               << Shrub
               << std::endl;
-    Tom._signForm(Shrub);
-    Tom._executeForm(Shrub);
+    Tom.signForm(Shrub);
+    Tom.executeForm(Shrub);
 
     Bureaucrat Jerry("Jerry", 149);
     ShrubberyCreationForm schoolShrub("School");
@@ -27,8 +27,8 @@ int main()
               << "\n"
               << schoolShrub
               << std::endl;
-    Jerry._signForm(schoolShrub);
-    Jerry._executeForm(schoolShrub);
+    Jerry.signForm(schoolShrub);
+    Jerry.executeForm(schoolShrub);
 
     Bureaucrat John("John", 140);
     ShrubberyCreationForm parkShrub("Park");
@@ -36,23 +36,23 @@ int main()
               << "\n"
               << parkShrub
               << std::endl;
-    John._signForm(parkShrub);
-    John._executeForm(parkShrub);
+    John.signForm(parkShrub);
+    John.executeForm(parkShrub);
 
 	RobotomyRequestForm Robo("test");
-	Tom._signForm(Robo);
-	Tom._executeForm(Robo);
+	Tom.signForm(Robo);
+	Tom.executeForm(Robo);
 	RobotomyRequestForm Car("Car");
-	Jerry._signForm(Car);
-	Jerry._executeForm(Car);
+	Jerry.signForm(Car);
+	Jerry.executeForm(Car);
 
 	PresidentialPardonForm family1("family1");
-	John._signForm(family1);
-	John._executeForm(family1);
+	John.signForm(family1);
+	John.executeForm(family1);
 
 	PresidentialPardonForm family2("family2");
-	Jerry._signForm(family2);
-	Jerry._executeForm(family2);
+	Jerry.signForm(family2);
+	Jerry.executeForm(family2);
     {
       Intern someRandomIntern;
       AForm* rrf;

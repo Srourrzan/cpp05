@@ -19,9 +19,9 @@ public:
   AForm* makeForm(const std::string &name, const std::string &target);
 
 private:
-  AForm * _createShrubbery( const std::string & );
-  AForm * _createRobotomy( const std::string & );
-  AForm * _createPresidential( const std::string & );
+  AForm * createShrubbery( const std::string & );
+  AForm * createRobotomy( const std::string & );
+  AForm * createPresidential( const std::string & );
   struct FromInfoStruct {
     std::string name;
     AForm* (Intern::*creator)( const std::string & );

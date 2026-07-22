@@ -25,8 +25,9 @@ RobotomyRequestForm & RobotomyRequestForm::operator=( const RobotomyRequestForm 
   return (*this);
 }
 
-void RobotomyRequestForm::_executeAction( ) const
+void RobotomyRequestForm::execute( Bureaucrat const & executor ) const
 {
+  (void)executor;
   std::cout << "Dnn Dnnnn Dnn Dnn\n"
 			<< "Vrmmmmmmmmmmm, Vrmmmmmmm.\n"
 			<< std::endl;
@@ -47,11 +48,11 @@ std::ostream & operator<<( std::ostream & os, const RobotomyRequestForm & rhs )
 {
     os << "Robotomy form {"
       << "target: "
-      << rhs._getTarget()
+      << rhs.getTarget()
       << " sign grade: "
-      << rhs._getSignGrade()
+      << rhs.getSignGrade()
       << " execution grade: "
-      << rhs._getExecutionGrade()
+      << rhs.getExecutionGrade()
       << "}";
 
   return (os);

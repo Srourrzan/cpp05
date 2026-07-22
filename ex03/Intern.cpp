@@ -6,25 +6,25 @@ Intern::~Intern() {}
 Intern::Intern(const Intern &other) { (void)other; }
 Intern &Intern::operator=(const Intern &other) { (void)other; return *this; }
 
-AForm * Intern::_createShrubbery( const std::string & target )
+AForm * Intern::createShrubbery( const std::string & target )
 {
   return new ShrubberyCreationForm(target);
 }
 
-AForm * Intern::_createRobotomy( const std::string & target )
+AForm * Intern::createRobotomy( const std::string & target )
 {
   return new RobotomyRequestForm(target);
 }
 
-AForm * Intern::_createPresidential( const std::string & target )
+AForm * Intern::createPresidential( const std::string & target )
 {
   return new PresidentialPardonForm(target);
 }
 
 const Intern::FromInfoStruct Intern::fromTypes[] = {
-  {"shrubbery creation", &Intern::_createShrubbery},
-  {"robotomy request", &Intern::_createRobotomy},
-  {"presidential pardon", &Intern::_createPresidential}
+  {"shrubbery creation", &Intern::createShrubbery},
+  {"robotomy request", &Intern::createRobotomy},
+  {"presidential pardon", &Intern::createPresidential}
 };
 
 const size_t Intern::fromCount = sizeof(Intern::fromTypes) / sizeof(Intern::fromTypes[0]);
