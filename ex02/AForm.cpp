@@ -39,64 +39,64 @@ AForm & AForm::operator=( const AForm & rhs )
   return (*this);
 }
 
-const std::string & AForm::_getName( ) const
+const std::string & AForm::getName( ) const
 {
   return (m_name);
 }
 
-int AForm::_getSignGrade( ) const
+int AForm::getSignGrade( ) const
 {
   return (m_signGrade);
 }
 
-int AForm::_getExecutionGrade( ) const
+int AForm::getExecutionGrade( ) const
 {
   return (m_executeGrade);
 }
 
-bool AForm::_getSignedFlag( ) const
+bool AForm::getSignedFlag( ) const
 {
   return (m_signedFlag);
 }
 
-std::string AForm::_getTarget( ) const
+std::string AForm::getTarget( ) const
 {
   return (m_target);
 }
 
-void AForm::_beSigned( Bureaucrat & boss )
+void AForm::beSigned( Bureaucrat & boss )
 {
   std::cout << "Form sign grade: "
             << m_signGrade
             << "\nboss grade: "
-            << boss._getGrade()
+            << boss.getGrade()
             << std::endl;
-  if (boss._getGrade() <= m_signGrade)
+  if (boss.getGrade() <= m_signGrade)
     m_signedFlag = true;
   else
     throw (GradeTooLowException());
 }
 
-void AForm::_execute( Bureaucrat const & executor ) const
+void AForm::executeAction( Bureaucrat const & executor ) const
 {
   if (!m_signedFlag)
     throw (NotSigndException());
-  if (executor._getGrade() > m_executeGrade) //check condition
+  if (executor.getGrade() > m_executeGrade) //check condition
     throw (GradeTooLowException());
-  _executeAction();
+  execute(executor);
 }
 
 
 std::ostream & operator<<( std::ostream & os, AForm & rhs)
 {
   os << "AForm name: "
-      << rhs._getName()
+      << rhs.getName()
       << "\nsign minimum grade: "
-      << rhs._getSignGrade()
+      << rhs.getSignGrade()
       << "\nexecution minimum grade: "
-      << rhs._getExecutionGrade()
+      << rhs.getExecutionGrade()
       << "\nis it signed: "
-      << rhs._getSignedFlag()
+      << rhs.getSignedFlag()
       << std::endl;
   
   return (os);

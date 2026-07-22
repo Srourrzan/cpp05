@@ -32,38 +32,38 @@ Bureaucrat & Bureaucrat::operator=( Bureaucrat & rhs)
 	return (*this);
 }
 
-const std::string & Bureaucrat::_getName()
+const std::string & Bureaucrat::getName()
 {
 	return (m_name);
 }
 
-int Bureaucrat::_getGrade( ) const
+int Bureaucrat::getGrade( ) const
 {
 	return (m_grade);
 }
 
-void Bureaucrat::_increamentGrade()
+void Bureaucrat::increamentGrade()
 {
 	m_grade -= 1;
 	if (m_grade < 1)
 		throw (GradeTooHighException());
 }
 
-void Bureaucrat::_decreamentGrade()
+void Bureaucrat::decreamentGrade()
 {
 	m_grade += 1;
 	if (m_grade > 150)
 		throw (GradeTooLowException());
 }
 
-void Bureaucrat::_signForm( AForm & form )
+void Bureaucrat::signForm( AForm & form )
 {
 	try
   {
-    form._beSigned(*this);
+    form.beSigned(*this);
     std::cout << m_name
             << " signed "
-            << form._getName()
+            << form.getName()
             << std::endl;
   }
   catch(const std::exception& e)
@@ -72,14 +72,14 @@ void Bureaucrat::_signForm( AForm & form )
   }
 }
 
-void Bureaucrat::_executeForm( const AForm & form ) const
+void Bureaucrat::executeForm( const AForm & form ) const
 {
 	try
 	{
-		form._execute(*this);
+		form.executeAction(*this);
 		std::cout << this->m_name
 				  << " executed "
-				  << form._getName()
+				  << form.getName()
 				  << std::endl;
 	}
 	catch(const AForm::NotSigndException & e)
@@ -94,7 +94,7 @@ void Bureaucrat::_executeForm( const AForm & form ) const
 			  << e.what()
 			  << m_grade
 			  << " for the form with execution grade of "
-			  << form._getExecutionGrade()
+			  << form.getExecutionGrade()
               << std::endl;
   }
   catch(const AForm::FileCreationException & e)
@@ -111,9 +111,9 @@ void Bureaucrat::_executeForm( const AForm & form ) const
 
 std::ostream & operator<<(std::ostream & os, Bureaucrat & rhs)
 {
-  os  << rhs._getName()
+  os  << rhs.getName()
       << ", bureaucrat grade "
-      << rhs._getGrade()
+      << rhs.getGrade()
       << ".";
   
   return (os);

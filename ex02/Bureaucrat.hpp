@@ -16,12 +16,12 @@ public:
   Bureaucrat( const std::string &, int );
   Bureaucrat( const Bureaucrat& );
   Bureaucrat & operator=( Bureaucrat & );
-  int _getGrade( ) const;
-  const std::string & _getName( );
-  void _increamentGrade( );
-  void _decreamentGrade( );
-  void _signForm( AForm & );
-  void _executeForm( const AForm & ) const;
+  int getGrade( ) const;
+  const std::string & getName( );
+  void increamentGrade( );
+  void decreamentGrade( );
+  void signForm( AForm & );
+  void executeForm( const AForm & ) const;
 
   class GradeTooHighException: public std::exception
   {

@@ -14,7 +14,7 @@ public:
   RobotomyRequestForm( const RobotomyRequestForm & );
   RobotomyRequestForm & operator=( const RobotomyRequestForm & );
   
-  virtual void _executeAction( ) const;
+  virtual void execute( Bureaucrat const & executor ) const;
 
 private:
   

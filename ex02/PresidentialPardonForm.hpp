@@ -12,7 +12,7 @@ public:
   PresidentialPardonForm( const PresidentialPardonForm & );
   PresidentialPardonForm & operator=( const PresidentialPardonForm & );
 
-  virtual void _executeAction( ) const;
+  virtual void execute( Bureaucrat const & executor ) const;
 
 private:
   
